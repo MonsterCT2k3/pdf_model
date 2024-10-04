@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài khoản</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/PDF.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/account.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen d-flex flex-column">
+        {% include 'navigation.html' %}
+        
+        <header>
+            <div class="container-fluid d-flex justify-content-between my-2 crud-header">
+                <h1 class="text-dark m-0 d-flex justify-content-center flex-column">
+                    Quản lý tài khoản
+                </h1>
+                <button type="button" class="btn btn-primary js-btn-create"><i class="fa-solid fa-plus"></i>  Thêm mới</button>
+            </div>
+        </header>
+        <main class="flex-grow-1">
+            <div class="js-crud-table-content" style="display: block;">
+                <div class="card rounded-4 mb-2 horizontal-scrollable">
+                    <table class="table table-bordered table-condensed table-hover table-responsive table-striped table-crud">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tên đăng nhập</th>
+                                <th scope="col">Trạng tên người dùng</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Quyền</th>
+                                <th scope="col">Ngày tạo</th>
+                                <th scope="col" class="table-action-group"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for account in accounts %}
+                            <tr data-id = "{{ account['id'] }}">
+                                <td>{{ account['user_name'] }}</td>
+                                <td>{{ account['name'] }}</td>
+                                <td>{{ account['email'] }}</td>
+                                <td>{{ account['role'] }}</td>
+                                <td>{{ account['created_at'] }}</td>
+                                <td class="table-action-group">
+                                    <a href="/edit-account/{{ account['id'] }}" class="btn js-resource-edit btn-transparent-primary btn-sm icon-only" title="Sửa">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <a href="/delete-account/{{ account['id'] }}" class="btn js-resource-delete btn-transparent-danger btn-sm icon-only" title="Xoá">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    {% include 'add_user.html' %}
+    {% include 'delete_account.html' %}
+    {% include 'edit_account.html' %}
+    {% include 'pass_modal.html' %}
+
+</body>
+</html>

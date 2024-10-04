@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Predictor</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/PDF.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body style="display:flex;flex-direction:column">
+    <div style="flex-grow: 1;">
+        <div class="header">
+            {% include 'navigation.html' %}
+        </div>
+
+        <div class="tool">
+            <div class="containers">
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+
+                <h1>Phát hiện mã độc file PDF</h1>
+                <h2 style="text-align: center">Phát hiện mã độc trên file PDF một cách nhanh chóng và dễ dàng</h2>
+                <div class="no-limit" style="text-align: center;">
+                    <span class="ms-2"><i class="fa-solid fa-check" style="color: #63E6BE;"></i> Miễn phí</span>
+                    <span class="ms-2"><i class="fa-solid fa-check" style="color: #63E6BE;"></i> Trực tuyến</span>
+                    <span class="ms-2"><i class="fa-solid fa-check" style="color: #63E6BE;"></i> Không giới hạn</span>
+                </div>
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <form id="uploadForm" class="row g-3" action="/predict" method="post" enctype="multipart/form-data">
+                            <div class="row mt-3">
+                                <label for="module-select" class="form-label col-md-3">Mô hình</label>
+                                <div class="col-md-9">
+                                    <select id="module-select" class="form-select" aria-label="Default select example"
+                                            name="module-select">
+                                        <option value="RandomForest">Random Forest</option>
+                                        <option value="SVM">SVM</option>
+                                        <option value="LogisticRegression">LogisticRegression</option>
+                                        <option value="KNeighbors">KNeighbors</option>
+                                        <option value="DecisionTree">DecisionTree</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="drop-container dropzone" type="file">
+                                <span class="drop-title text-muted">Kéo tập tin hoặc chọn file ở đây</span>
+                                <i class="fas fa-arrow-down fa-lg text-muted" style="margin: 8px 0; "></i>
+                                <input type="file" name="file" accept=".pdf" class="form-control input-pdf" id="formFile">
+                            </div>
+                            <div id="prediction"></div>
+                            <div id="loading" class="spinner-border text-center" role="status" style="display: none">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-primary">Kiểm tra</button>
+                            </div>    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    {% include 'result_modal.html' %}
+    {% include 'pass_modal.html' %}
+</body>
+</html>

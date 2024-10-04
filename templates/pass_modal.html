@@ -1,0 +1,37 @@
+<div class="modal fade" id="pass-modal" tabindex="-1" aria-labelledby="change-password-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 2rem;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="change-password-modal">Đổi mật khẩu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/change-password" method="post" class="d-flex flex-column" id="change-password-form">
+                <div class="modal-body">
+                        <div class="mb-3 row">
+                            <label for="old-pass" class="col-sm-4 col-form-label">Mật khẩu cũ</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="old_pass" name="old-pass">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="new-pass" class="col-sm-4 col-form-label">Mật khẩu mới</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="new_pass" name="new-pass">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="confirm-pass" class="col-sm-4 col-form-label">Xác nhận mật khẩu</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="confirm_pass" name="confirm-pass">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
+                    <button type="reset" class="btn btn-light">Đặt lại</button>
+                    <button type="submit" class="js-save btn-submit btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

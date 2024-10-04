@@ -319,8 +319,7 @@ for filename in os.listdir(directory_clean):
     else:
         print("Skipped file:", filename)
         continue
-
-
+    
 dataset_p = DataFrame(dataset_a)
 dataset_shuffled = dataset_p.sample(frac=1)
 dataset_shuffled.to_csv('pdfdataset.csv')

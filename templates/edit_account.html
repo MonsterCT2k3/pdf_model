@@ -1,0 +1,60 @@
+<div class="modal fade" id="edit-account-modal" tabindex="-1" aria-labelledby="edit-account-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 2rem;">
+            <div class="modal-header">
+                <h5 class="modal-title">Sửa người dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" class="d-flex flex-column" id="edit-account-form">
+                <div class="modal-body">
+                    <div class="mb-3 row form-group">
+                        <label for="user-name-edit" class="col-md-4 col-form-label text-md-end text-uppercase-first">Tên đăng nhập</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="user-name-edit" name="user-name-edit" disabled>
+                        </div>
+                    </div>
+                    <div class="mb-3 row form-group">
+                        <label for="name-edit" class="col-md-4 col-form-label text-md-end text-uppercase-first">Tên hiển thị</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="name-edit" name="name-edit">
+                        </div>
+                    </div>
+                    <div class="mb-3 row form-group">
+                        <label for="email-edit" class="col-md-4 col-form-label text-md-end text-uppercase-first">Email</label>
+                        <div class="col-md-8">
+                            <input type="email" class="form-control" id="email-edit" name="email-edit">
+                        </div>
+                    </div>
+                    <div class="mb-3 row form-group">
+                        <label for="role-edit" class="col-md-4 col-form-label text-md-end text-uppercase-first">Quyền</label>
+                        <div class="col-md-8">
+                            <select class="form-select" aria-label="Default select example" id="role-edit" name="role-edit">
+                                <option value="">--Không chọn--</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="mb-3 row form-group">
+                        <label for="pass-edit" class="col-md-4 col-form-label text-md-end text-uppercase-first">Mật khẩu</label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" id="pass-edit" name="pass-edit">
+                        </div>
+                    </div>
+                    <div class="mb-3 row form-group">
+                        <label for="confirm-pass-edit" class="col-md-4 col-form-label text-md-end text-uppercase-first">Xác nhận mật khẩu</label>
+                        <div class="col-md-8">
+                            <input type="password" class="form-control" id="confirm-pass-edit" name="confirm-pass-edit">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
+                    <button type="reset" class="btn btn-light">Đặt lại</button>
+                    <button type="submit" class="js-save btn-submit btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
