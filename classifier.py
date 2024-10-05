@@ -19,9 +19,9 @@ clf = DecisionTreeClassifier()
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 acs = accuracy_score(y_test, y_pred)
-precision = precision_score(y_test, y_pred)
-recall = recall_score(y_test, y_pred)
-f1 = f1_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, pos_label='yes')
+recall = recall_score(y_test, y_pred, pos_label='yes')
+f1 = f1_score(y_test, y_pred, pos_label='yes')
 cm = confusion_matrix(y_test, y_pred)
 print("Accuracy:", acs)
 print("Precision:", precision)
@@ -30,7 +30,8 @@ print("F1:", f1)
 print("\nConfusion Matrix:\n", cm)
 
 
-path = '/Users/khanh/Downloads/test.pdf'
+path = 'storage/3TBK.pdf'
 features = feature_extraction(path)
+print(features)
 result = clf.predict(features)
 print('Result:', result)

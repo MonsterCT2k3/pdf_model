@@ -939,31 +939,31 @@ class cExpandFilenameArguments():
         self.containsUnixShellStyleWildcards = True
         return glob.glob(filename)
 
-    def CheckIfFilesAreValid(self):
-        valid = []
-        doesnotexist = []
-        isnotafile = []
-        for filename, expression in self.filenameexpressions:
-            hashfile = False
-            try:
-                hashfile = FilenameCheckHash(filename, self.literalfilenames)[0] == FCH_DATA
-            except:
-                pass
-            if filename == '' or hashfile:
-                valid.append([filename, expression])
-            elif not os.path.exists(filename):
-                doesnotexist.append(filename)
-            elif not os.path.isfile(filename):
-                isnotafile.append(filename)
-            else:
-                valid.append([filename, expression])
-        self.filenameexpressions = valid
-        if len(doesnotexist) > 0:
-            self.warning = True
-            self.message += 'The following files do not exist and will be skipped: ' + ' '.join(doesnotexist) + '\n'
-        if len(isnotafile) > 0:
-            self.warning = True
-            self.message += 'The following files are not regular files and will be skipped: ' + ' '.join(isnotafile) + '\n'
+    # def CheckIfFilesAreValid(self):
+    #     valid = []
+    #     doesnotexist = []
+    #     isnotafile = []
+    #     for filename, expression in self.filenameexpressions:
+    #         hashfile = False
+    #         try:
+    #             hashfile = FilenameCheckHash(filename, self.literalfilenames)[0] == FCH_DATA
+    #         except:
+    #             pass
+    #         if filename == '' or hashfile:
+    #             valid.append([filename, expression])
+    #         elif not os.path.exists(filename):
+    #             doesnotexist.append(filename)
+    #         elif not os.path.isfile(filename):
+    #             isnotafile.append(filename)
+    #         else:
+    #             valid.append([filename, expression])
+    #     self.filenameexpressions = valid
+    #     if len(doesnotexist) > 0:
+    #         self.warning = True
+    #         self.message += 'The following files do not exist and will be skipped: ' + ' '.join(doesnotexist) + '\n'
+    #     if len(isnotafile) > 0:
+    #         self.warning = True
+    #         self.message += 'The following files are not regular files and will be skipped: ' + ' '.join(isnotafile) + '\n'
 
     def Filenames(self):
         if self.expressionprefix == None:
