@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # Tải mô hình đã lưu
 clf_loaded = joblib.load('random_forest_model.pkl')
 
-path = 'storage/test.pdf'
+path = 'storage/test4.pdf'
 features = feature_extraction(path)
 print(features)
 result = clf_loaded.predict(features)

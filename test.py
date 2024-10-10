@@ -45,6 +45,6 @@ print(f'accuracy: {acs}')
 print(f'precision: {precision}')
 print(f'recall: {recall}')
 print(f'f1: {f1}')
-joblib.dump(clf, 'random_forest_model.pkl')
+joblib.dump(clf, 'random_forest_model1.pkl')
 
 

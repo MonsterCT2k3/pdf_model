@@ -284,7 +284,7 @@ def extract_featues(output):
 
 def feature_extraction(filepath):
     features = []
-    command_to_execute = 'python pdfid.py ' + filepath
+    command_to_execute = 'python pdfid.py "' + filepath + '"'
     stdout = Popen(command_to_execute, shell=True, stdout=PIPE).stdout
     output = stdout.readlines()
     if len(output) == 24:
